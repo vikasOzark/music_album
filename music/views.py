@@ -16,7 +16,7 @@ def details(request,album_id):
         
     return render(request, 'music/details.html', {'album' : album})
 
-def details(request,album_id):
+def fevorite(request,album_id):
     album = get_object_or_404(Album, pf = album_id)
 
 
