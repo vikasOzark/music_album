@@ -25,5 +25,5 @@ def fevorite(request,album_id):
     except (KeyError,song.DoesNotExist):
         return render(request, 'music/details.html', {
             'album' : album,
-            'erre_messenge' : 'You din not selected right song'
+            'error_messenge' : 'You din not selected right song'
             })
