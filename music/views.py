@@ -19,6 +19,7 @@ def details(request,album_id):
 def details(request,album_id):
     album = get_object_or_404(Album, pf = album_id)
 
+
     try:
         selected_song = album.song_get.get(pd = request.POST['song'])
     except (KeyError,song.DoesNotExist):
@@ -26,4 +27,3 @@ def details(request,album_id):
             'album' : album,
             'erre_messenge' : 'You din not selected right song'
             })
-    
