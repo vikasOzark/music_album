@@ -11,5 +11,5 @@ urlpatterns = [
     re_path(r'^(?P<album_id>[0-9]+)/$', views.details, name = 'details'),
 
     #/music/<album_id>/fevorite/
-    re_path(r'^(?P<album_id>[0-9]+)/fevorite/$', views.fevorite, name = 'fevorote')
+    re_path(r'^(?P<album_id>[0-9]+)/fevorite/$', views.fevorite, name = 'fevorite')
 ]
