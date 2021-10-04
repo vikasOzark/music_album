@@ -5,11 +5,11 @@ app_name = 'music'
 
 urlpatterns = [
     # /music/
-    path('', views.index, name='index'),
+    path('', views.IndexVews.as_view(), name='index'),
 
     #/music/<album_id>/       old synta ==> |   url(r'^(?P<album_id>[0-9]+)/$', views.details, name = 'details')  |
-    re_path(r'^(?P<album_id>[0-9]+)/$', views.details, name = 'details'),
+    re_path(r'^(?P<pk>[0-9]+)/$', views.detailView.as_view(), name = 'details'),
 
-    #/music/<album_id>/fevorite/
-    re_path(r'^(?P<album_id>[0-9]+)/fevorite/$', views.fevorite, name = 'fevorite')
+    # /music/album/add/
+    path('album/add/',views.AlbumCreate.as_view(), name = 'album-add'),
 ]
