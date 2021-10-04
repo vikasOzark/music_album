@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path ,include
+from django.urls import static
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('music.urls'))
 ]
+
+if settings.DEGBUG:
+    urlpatterns += static(settings.STATIC_URL,document_rot = settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,document_rot = settings.MEDIA_URL)
