@@ -5,7 +5,7 @@ app_name = 'music'
 
 urlpatterns = [
     # /music/
-    path('', views.IndexVews.as_view(), name='index'),
+    path('register/', views.UserFromview.as_view(), name='register'),
 
     #/music/<album_id>/       old synta ==> |   url(r'^(?P<album_id>[0-9]+)/$', views.details, name = 'details')  |
     re_path(r'^(?P<pk>[0-9]+)/$', views.detailView.as_view(), name = 'details'),

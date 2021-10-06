@@ -24,10 +24,33 @@ class AlbumCreate(CreateView):
 
 class UserFromview(View):
     form_class = UserForms
-    templates_name = 'music/registration.html'
-    
+    template_name = 'music/registration.html'
+    #display blank form for lgin
     def get(self, request):
-        pass
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
 
+    # process form data
     def post(self,request):
-        pass
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            user = form.save(commit=False)
+
+            # cleaned data
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            user.set_password(password)
+            user.save()
+
+            # return user object if crendiial are correct
+            user = authenticate( password=password, username=username)
+
+            if user is not None:
+                if user.is_active:
+                    login(request,user)
+                    return redirect('music/index')
+
+        return render(request, self.template_name, {'form': form})
+        
